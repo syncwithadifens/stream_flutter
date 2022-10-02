@@ -8,15 +8,15 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
+  Stream<int> counterNumber() async* {
+    for (var i = 1; i <= 10; i++) {
+      await Future.delayed(const Duration(seconds: 1));
+      yield i;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
-    Stream<int> counterNumber() async* {
-      for (var i = 1; i <= 10; i++) {
-        await Future.delayed(const Duration(seconds: 1));
-        yield i;
-      }
-    }
-
     // NOTE: Test
     debugPrint('Di rebuild ulang');
     return MaterialApp(
